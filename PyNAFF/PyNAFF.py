@@ -230,7 +230,10 @@ def naff(data, turns=300, nterms=1, skipTurns=0, getFullSpectrum=False, window=1
 	EPS    = FREFON/NEPS
 
 	T    = np.linspace(0, turns, num=turns+1, endpoint=True)*2.0*np.pi - np.pi*turns
-	vars['TWIN'] = 1.0+np.cos(T/turns)
+
+        # The outcommented part is an unused/overwritten Hann window (times two)
+	#vars['TWIN'] = 1.0+np.cos(T/turns)
+
 	vars['TWIN'] = ((2.0**window*np.math.factorial(window)**2)/float(np.math.factorial(2*window)))*(1.0+np.cos(T/turns))**window
 	vars['ZTABS'] = data[skipTurns:skipTurns+turns+1]
 
